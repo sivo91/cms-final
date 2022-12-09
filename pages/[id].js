@@ -1,23 +1,19 @@
-import Layout from '../components/layout';
+
 import { getAllIds, getData } from '../lib/data';
 import Link from 'next/link'
 
 
-
-// dava id a vytvara novu page
 export async function getStaticPaths() {
   const paths = await getAllIds();
   return {
-    paths, // represent id
+    paths, 
     fallback: false
   };
 }
 
 
- // vytahuje data 
 export async function getStaticProps({ params }) {
   const itemData = await getData(params.id);
-  // console.log(itemData);
   return {
     props: {
       itemData 
@@ -28,17 +24,13 @@ export async function getStaticProps({ params }) {
 
 
 
-
-
-// data novej stranke
 export default function Entry({ itemData }) {
 
-   
   
   return (
    
     <>
-      
+
         <div className="box">
        
          <div className="card vstack mx-auto mt-5">
@@ -63,7 +55,6 @@ export default function Entry({ itemData }) {
 
        
        {
-         // link na domovsku stranky
          <Link href="/">
            <button type="button" className="btn btn-outline-warning vstack mx-auto">Back Home</button>
           </Link>
