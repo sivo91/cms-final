@@ -1,5 +1,7 @@
 import React from 'react'
 import {Text,Box,Center,Heading,Container,Button  } from '@chakra-ui/react';
+import Link from 'next/link';
+
 
  // contact page
 function Contact() {
@@ -66,7 +68,11 @@ function Contact() {
                  <Center>
                     <Text mt={3}>
                       By submitting this form I give my consent for CMS project to process my personal data pursuant to CMS Project
-                     <a href="/policy" style={{color: '#04b8b8'}}> Privacy and Cookies Policy</a>
+                      <Link href='/policy'>
+                        <Text style={{color: '#04b8b8'}}> 
+                             Privacy and Cookies Policy
+                        </Text>
+                      </Link>
                    </Text>  
                 </Center>   
                  
