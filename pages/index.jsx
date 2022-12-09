@@ -35,7 +35,7 @@ export default function Home ({ allData }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
      
-    
+  <h1 className='text-center mt-5 fs-3'>Final Headless CMS-Powered App</h1>
       
    <div className="content my-5">
           

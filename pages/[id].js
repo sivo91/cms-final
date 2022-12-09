@@ -33,9 +33,7 @@ export async function getStaticProps({ params }) {
 // data novej stranke
 export default function Entry({ itemData }) {
 
-  
-
-  console.log(itemData)
+   
   
   return (
    
@@ -53,14 +51,10 @@ export default function Entry({ itemData }) {
                
 
                <p className="text-center">Post ID: {itemData.ID}</p>
-               <p className="text-center"> Post Status: {itemData.acf}</p>
-
-                   {console.log(itemData)}
-
+             
 
                <p className="text-center"> Post Name: {itemData.post_title}</p>
-               <p className="text-center"> Content: {itemData.post_content}</p>
-               
+              
 
                <div className="text-center" dangerouslySetInnerHTML={{__html: itemData.post_title}}/>
               

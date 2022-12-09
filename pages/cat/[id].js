@@ -34,27 +34,20 @@ export async function getStaticProps({ params }) {
 export default function Entry({ itemData }) {
 
 
-  let x = itemData.acf_box
-  console.log(x)
-
- /*  function a (item)  {
-      let x = '{"' + item.acf_box + '"}'
-      x = x.replace(/,/g,'","')
-      x = x.replace(/:/g,'":"')
-      const y = JSON.parse(x)
-      item.acf_box = y
+   function obj(str) {
+    return str
+      .split(",")
+      .map((keyVal) => {
+        return keyVal.split(":").map((_) => _.trim());
+      })
+      .reduce((accumulator, currentValue) => {
+        accumulator[currentValue[0]] = currentValue[1];
+        return accumulator;
+      }, {});
   }
-  */
-  
-  //console.log(itemData.acf_box)
 
-   /*    let x = '{"' + itemData.acf_box + '"}'
-      x = x.replaceAll(',','","')
-      x = x.replaceAll(',','":"')
-      const y = JSON.parse(x)
-      console.log(y)
-      console.log(y.breeds)
-      itemData.acf_box = y */
+    const x = obj(itemData.acf_box)
+    console.log(x)
    
   
   return (
@@ -66,24 +59,22 @@ export default function Entry({ itemData }) {
          <div className="card vstack mx-auto mt-5">
             <div className="card-body">
               
-              <h3 className="card-text text-center fs-3 mb-2"> 
+              <h3 className="card-text text-center fs-3 mb-2 fw-bold"> 
                       {itemData.post_title}</h3>
 
               
 
-              {/* */}
+              <p className="text-center"> 
+               <span className='fw-semibold'>Breeds: </span> {x.breeds}
+              </p>
 
+               <p className="text-center">
+                  <span className='fw-semibold'>Age: </span> {x.age}
+                 </p>
 
-               {/*  <p className="text-center"> acf-field : {itemData.acf_box}</p> */} 
-
-                  {/*  {console.log(itemData)} */}
-
-                  
-              <p className="text-center">acf_fields : {itemData.acf_box}</p> 
-
-
-               {/* <p className="text-center"> Post Name: {itemData.post_title}</p>
-                <p className="text-center"> status: {itemData.post_status}</p>   */}
+                 <p className="text-center"> 
+                    <span className='fw-semibold'>Color: </span> {x.color}
+                 </p> 
                
 
                <div className="text-center" dangerouslySetInnerHTML={{__html: itemData.post_title}}/>

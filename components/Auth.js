@@ -195,11 +195,11 @@ export default function Auth() {
               onClick={isOpen ? onClose : onOpen}
             />
             <HStack spacing={8} alignItems={'center'}>
-            <Link href={'/'}>
-                   <Link href={'/'}>
+           
+              <Link href={'/'}>
                     <Text fontSize={24}>CMS</Text>
               </Link>
-              </Link>
+          
               <HStack
                 as={'nav'}
                 spacing={4}
@@ -303,7 +303,7 @@ export default function Auth() {
                 <Link href="/dog" >
                     <Text fontSize={24}  ms={3}>Dogs</Text>
               </Link>
-               <Link href="/cats" >
+               <Link href="/cat" >
                     <Text fontSize={24}  ms={3}>Cats</Text>
               </Link>
              

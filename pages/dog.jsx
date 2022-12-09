@@ -9,6 +9,7 @@ import Link from 'next/link'
 
 
 
+
 export async function getStaticProps() {
   const allData = await getSortedList();
   return {
@@ -18,8 +19,16 @@ export async function getStaticProps() {
     revalidate: 30
   }
 }
+ 
 
-
+/* 
+export async function getStaticProps() {
+  const { getTaxiData } = require("../lib/helpers")
+  return { 
+    props: (await getTaxiData()), 
+    revalidate: 1 
+  }
+} */
 
 
 export default function Home ({ allData }) {
@@ -39,30 +48,7 @@ export default function Home ({ allData }) {
       
    <div className="content my-5">
           
-        {/*  {
-            allData.map(({ id, title, img}) => (
-              <Link key={id} href={`/dog/${id}`}>
-               <div className="card my-5">
-                 <div className="img mt-4">
-                  <Image  src={ img ? img : '/dog.jpg' } 
-                     height={54}  width={150}
-                     alt="img" />
-                 </div>
-                
-                  <div className="card-body">
-                    <p className="card-text text-center name">{title}</p>
-                    
-                  
-                  </div>
-                 
-                </div>
-              </Link>
-            ))
-          } */}
-
-
-
-          
+    
             {
             allData.map(({ id, title,acf, img}) => (
               <Link key={id} href={`/dog/${id}`}>
@@ -75,7 +61,9 @@ export default function Home ({ allData }) {
                 
                   <div className="card-body">
                     <p className="card-text text-center name fw-bold">{title}</p>
-                    <p className="card-text text-center name">
+
+
+                   {/*  <p className="card-text text-center name">
                       <span className='fw-semibold'> Breeds: </span>{acf.dog}
                       </p>
                     <p className="card-text text-center name">
@@ -83,7 +71,7 @@ export default function Home ({ allData }) {
                     </p>
                     <p className="card-text text-center name">
                       <span className='fw-semibold'> Color: </span> {acf.color}
-                    </p>
+                    </p> */}
                    
                     
 

@@ -45,7 +45,7 @@ export default function Home ({ allData }) {
                 
                   <div className="card-body">
                     <p className="card-text text-center name fw-bold">{title}</p>
-                    <p className="card-text text-center name">
+                   {/*  <p className="card-text text-center name">
                       <span className='fw-semibold'> Breeds:</span>{acf.breeds}
                       </p>
                     <p className="card-text text-center name">
@@ -53,7 +53,7 @@ export default function Home ({ allData }) {
                     </p>
                     <p className="card-text text-center name">
                       <span className='fw-semibold'> Color:</span> {acf.color}
-                    </p>
+                    </p> */}
                    
                     
 

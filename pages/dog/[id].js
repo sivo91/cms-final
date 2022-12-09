@@ -21,7 +21,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       itemData 
-    }
+    },
+    revalidate: 5
   };
 }
 
@@ -33,56 +34,52 @@ export async function getStaticProps({ params }) {
 // data novej stranke
 export default function Entry({ itemData }) {
 
-  /* function obj(x) {
-       x = '{"' + item.acf_box + '"}'
-      x = x.replace(/,/g,'","')
-      x = x.replace(/:/g,'":"')
-      const y = JSON.parse(x)
-      item.acf_box = y
-      console.log(item.acf_box)
-      return item.acf_box
-    }
+  function obj(str) {
+    return str
+      .split(",")
+      .map((keyVal) => {
+        return keyVal.split(":").map((_) => _.trim());
+      })
+      .reduce((accumulator, currentValue) => {
+        accumulator[currentValue[0]] = currentValue[1];
+        return accumulator;
+      }, {});
+  }
 
-    obj(itemData) */
-  
-   /*   let x = itemData.acf/* .replace(',',',').replace(':',':').split(',') */
-    /*  console.log(x[1])
-   
-     function json2array(x){
-    var result = [];
-    var keys = Object.keys(x);
-    keys.forEach(function(key){
-        result.push(x[key]);
-    });
-    return result;
-}  */
-  
-   //console.log(json2array(itemData.acf_box))
+    const x = obj(itemData.acf_box)
+    console.log(x)
 
   return (
    
     <>
+
       
         <div className="box">
        
          <div className="card vstack mx-auto mt-5">
             <div className="card-body">
               
-              <h3 className="card-text text-center fs-3 mb-2"> 
+              <h3 className="card-text text-center fs-3 mb-2 fw-bold"> 
                       {itemData.post_title}</h3>
 
               
                
 
-               <p className="text-center">Post ID: {itemData.ID}</p>
-              
+               <p className="text-center">
+                 <span className='fw-semibold'>Post ID: </span> {itemData.ID}
+              </p>
+            
+               <p className="text-center">
+                 <span className='fw-semibold'>Dog: </span> {x.dog}
+               </p>
 
-                 {/*   {console.log(itemData)} */}
+               <p className="text-center">
+                  <span className='fw-semibold'>Age: </span> {x.age}
+               </p>
 
-
-               <p className="text-center"> Post Name: {itemData.post_title}</p>
-
-                 <p className="text-center"> acf-field: {itemData.acf_box}</p> 
+                 <p className="text-center"> 
+                    <span className='fw-semibold'>Color </span> {x.color}
+                 </p> 
                
 
                <div className="text-center" dangerouslySetInnerHTML={{__html: itemData.post_title}}/>
