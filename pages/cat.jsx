@@ -6,16 +6,13 @@ import Link from 'next/link'
 
 
 
-
-
-
 export async function getStaticProps() {
   const allData = await getSortedList();
   return {
     props: {
       allData
     },
-    revalidate: 30
+    revalidate: 5
   }
 }
 
@@ -23,13 +20,10 @@ export async function getStaticProps() {
 
 
 export default function Home ({ allData }) {
-
- console.log(allData)
-
+// console.log(allData)
   return (
     <>
 
-    
      <Head>
         <title>My page title</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -39,8 +33,8 @@ export default function Home ({ allData }) {
       
    <div className="content my-5">
           
-         {
-            allData.map(({ id, title, img}) => (
+          {
+            allData.map(({ id, title,acf, img}) => (
               <Link key={id} href={`/cat/${id}`}>
                <div className="card my-5">
                  <div className="img mt-4">
@@ -50,15 +44,27 @@ export default function Home ({ allData }) {
                  </div>
                 
                   <div className="card-body">
-                    <p className="card-text text-center name">{title}</p>
+                    <p className="card-text text-center name fw-bold">{title}</p>
+                    <p className="card-text text-center name">
+                      <span className='fw-semibold'> Breeds:</span>{acf.breeds}
+                      </p>
+                    <p className="card-text text-center name">
+                      <span className='fw-semibold'> Age:</span> {acf.age}
+                    </p>
+                    <p className="card-text text-center name">
+                      <span className='fw-semibold'> Color:</span> {acf.color}
+                    </p>
+                   
                     
-                  
+
                   </div>
                  
                 </div>
               </Link>
             ))
-          }
+          } 
+
+         
         
         </div>
 

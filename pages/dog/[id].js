@@ -33,10 +33,32 @@ export async function getStaticProps({ params }) {
 // data novej stranke
 export default function Entry({ itemData }) {
 
-  
+  /* function obj(x) {
+       x = '{"' + item.acf_box + '"}'
+      x = x.replace(/,/g,'","')
+      x = x.replace(/:/g,'":"')
+      const y = JSON.parse(x)
+      item.acf_box = y
+      console.log(item.acf_box)
+      return item.acf_box
+    }
 
-  console.log(itemData)
+    obj(itemData) */
   
+   /*   let x = itemData.acf/* .replace(',',',').replace(':',':').split(',') */
+    /*  console.log(x[1])
+   
+     function json2array(x){
+    var result = [];
+    var keys = Object.keys(x);
+    keys.forEach(function(key){
+        result.push(x[key]);
+    });
+    return result;
+}  */
+  
+   //console.log(json2array(itemData.acf_box))
+
   return (
    
     <>
@@ -53,13 +75,14 @@ export default function Entry({ itemData }) {
                
 
                <p className="text-center">Post ID: {itemData.ID}</p>
-               <p className="text-center"> Post Status: {itemData.acf}</p>
+              
 
-                   {console.log(itemData)}
+                 {/*   {console.log(itemData)} */}
 
 
                <p className="text-center"> Post Name: {itemData.post_title}</p>
-                 <p className="text-center"> acf-field: {itemData.acf_field}</p> 
+
+                 <p className="text-center"> acf-field: {itemData.acf_box}</p> 
                
 
                <div className="text-center" dangerouslySetInnerHTML={{__html: itemData.post_title}}/>

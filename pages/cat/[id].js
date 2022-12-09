@@ -21,10 +21,10 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       itemData 
-    }
+    }, 
+    revalidate: 10
   };
 }
-
 
 
 
@@ -33,9 +33,29 @@ export async function getStaticProps({ params }) {
 // data novej stranke
 export default function Entry({ itemData }) {
 
-  
 
-  console.log(itemData)
+  let x = itemData.acf_box
+  console.log(x)
+
+ /*  function a (item)  {
+      let x = '{"' + item.acf_box + '"}'
+      x = x.replace(/,/g,'","')
+      x = x.replace(/:/g,'":"')
+      const y = JSON.parse(x)
+      item.acf_box = y
+  }
+  */
+  
+  //console.log(itemData.acf_box)
+
+   /*    let x = '{"' + itemData.acf_box + '"}'
+      x = x.replaceAll(',','","')
+      x = x.replaceAll(',','":"')
+      const y = JSON.parse(x)
+      console.log(y)
+      console.log(y.breeds)
+      itemData.acf_box = y */
+   
   
   return (
    
@@ -50,16 +70,20 @@ export default function Entry({ itemData }) {
                       {itemData.post_title}</h3>
 
               
-               
 
-               <p className="text-center">Post ID: {itemData.ID}</p>
-               <p className="text-center"> acf-field : {itemData.acf_box}</p>
-
-                   {console.log(itemData)}
+              {/* */}
 
 
-               <p className="text-center"> Post Name: {itemData.post_title}</p>
-                <p className="text-center"> status: {itemData.post_status}</p>  
+               {/*  <p className="text-center"> acf-field : {itemData.acf_box}</p> */} 
+
+                  {/*  {console.log(itemData)} */}
+
+                  
+              <p className="text-center">acf_fields : {itemData.acf_box}</p> 
+
+
+               {/* <p className="text-center"> Post Name: {itemData.post_title}</p>
+                <p className="text-center"> status: {itemData.post_status}</p>   */}
                
 
                <div className="text-center" dangerouslySetInnerHTML={{__html: itemData.post_title}}/>

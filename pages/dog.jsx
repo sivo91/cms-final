@@ -39,7 +39,7 @@ export default function Home ({ allData }) {
       
    <div className="content my-5">
           
-         {
+        {/*  {
             allData.map(({ id, title, img}) => (
               <Link key={id} href={`/dog/${id}`}>
                <div className="card my-5">
@@ -58,7 +58,42 @@ export default function Home ({ allData }) {
                 </div>
               </Link>
             ))
-          }
+          } */}
+
+
+
+          
+            {
+            allData.map(({ id, title,acf, img}) => (
+              <Link key={id} href={`/dog/${id}`}>
+               <div className="card my-5">
+                 <div className="img mt-4">
+                  <Image  src={ img ? img : '/dog.jpg' } 
+                     height={54}  width={150}
+                     alt="img" />
+                 </div>
+                
+                  <div className="card-body">
+                    <p className="card-text text-center name fw-bold">{title}</p>
+                    <p className="card-text text-center name">
+                      <span className='fw-semibold'> Breeds: </span>{acf.dog}
+                      </p>
+                    <p className="card-text text-center name">
+                      <span className='fw-semibold'> Age: </span> {acf.age}
+                    </p>
+                    <p className="card-text text-center name">
+                      <span className='fw-semibold'> Color: </span> {acf.color}
+                    </p>
+                   
+                    
+
+                  </div>
+                 
+                </div>
+              </Link>
+            ))
+          } 
+          
         
         </div>
 
