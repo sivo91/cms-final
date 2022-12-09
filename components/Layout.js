@@ -1,6 +1,6 @@
 import React from 'react'
 import Auth from './Auth'
- import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
 
